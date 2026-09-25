@@ -115,6 +115,7 @@ scratch/
 
 # Ephemeral Skill Runtime & Review Artifacts
 .impeccable/
+.firebase/
 
 # Security Scans, Pentest Targets & Audit Artifacts
 targets/
