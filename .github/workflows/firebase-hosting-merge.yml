@@ -17,15 +17,21 @@ jobs:
       - name: Deploy to Firebase Hosting
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
-          if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
-            echo "::error title=Missing Secret::Secret FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO is empty or not configured in repository secrets."
+          if [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
+            echo "Deploying with Service Account credentials..."
+            KEY_FILE="/tmp/service-account.json"
+            printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$KEY_FILE"
+            export GOOGLE_APPLICATION_CREDENTIALS="$KEY_FILE"
+            npx --yes firebase-tools deploy --only hosting --project snorlaxx-portfolio --non-interactive
+            rm -f "$KEY_FILE"
+          elif [ -n "$FIREBASE_TOKEN" ]; then
+            echo "Deploying with Firebase Token..."
+            npx --yes firebase-tools deploy --only hosting --project snorlaxx-portfolio --token "$FIREBASE_TOKEN" --non-interactive
+          else
+            echo "::error title=Missing Secret::Neither FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO nor FIREBASE_TOKEN secret is configured in GitHub repository secrets."
+            echo "Configure one of these secrets at: https://github.com/Snorlaxx96/Portfolio/settings/secrets/actions"
             exit 1
           fi
-          echo "Secret is present. Key length: ${#FIREBASE_SERVICE_ACCOUNT}"
-          KEY_FILE="/tmp/service-account.json"
-          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$KEY_FILE"
-          export GOOGLE_APPLICATION_CREDENTIALS="$KEY_FILE"
-          npx --yes firebase-tools deploy --only hosting --project snorlaxx-portfolio --non-interactive
-          rm -f "$KEY_FILE"
 
