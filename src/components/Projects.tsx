@@ -9,7 +9,6 @@ interface Project {
   description: string
   image: string
   tags: string[]
-  stats: string
   demoUrl: string
   githubUrl: string
   features: string[]
@@ -17,28 +16,26 @@ interface Project {
 
 const flagshipProject: Project = {
   id: "becoffee-flagship",
-  title: "BeCoffee — Philippine Specialty Coffee & Roastery",
-  subtitle: "Full-Stack Progressive Web Application & Online Ordering Platform",
-  category: "Full-Stack Web Application",
+  title: "BeCoffee: Specialty Coffee & Roastery",
+  subtitle: "Full-Stack Progressive Web App & Online Ordering",
+  category: "Web Application",
   description:
-    "Production web application for BeCoffee, an artisanal specialty coffee roastery in Zamboanga City (Putik & Baliwasan). Features end-to-end beverage ordering in Philippine Pesos (₱), real-time cart persistence, responsive multi-breakpoint layout, and member profile management with zero-cache lag modal sheets.",
+    "Production web application for BeCoffee, a specialty coffee brand with locations in Putik and Baliwasan, Zamboanga City. Built with responsive client-side state, Philippine Peso (₱) menu ordering, and offline caching.",
   image: "https://becoffee-cafe.web.app/images/sanctuary/warm_teak_interior.webp",
   tags: [
-    "Progressive Web App",
+    "PWA",
     "Firebase Hosting",
-    "Vanilla ESNext",
+    "JavaScript",
     "Responsive Design",
-    "PWA Architecture",
-    "Local Storage State",
+    "Local Storage",
   ],
-  stats: "Live Production · PWA",
   demoUrl: "https://becoffee-cafe.web.app",
   githubUrl: "https://github.com/Snorlaxx96",
   features: [
-    "End-to-end client-side ordering cart with beverage customization and real-time Philippine Peso (₱) calculations",
-    "Interactive table and experience reservation workflow with mobile modal sheet guards and zero layout thrashing",
-    "Multi-location outpost directory with real-time operating hours telemetry across Putik and Baliwasan branches",
-    "Progressive Web App (PWA) manifest with asset caching and responsive picture elements for fast loads",
+    "Client-side ordering cart with item customization and Philippine Peso (₱) calculations",
+    "Table and seat reservation flow with touch-friendly mobile bottom sheets",
+    "Location directory with current operating schedules for Putik and Baliwasan branches",
+    "Progressive Web App support with service worker asset caching for fast reloads",
   ],
 }
 
@@ -48,10 +45,10 @@ export default function Projects() {
       {/* Section Header */}
       <div className="mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-          Featured Engineering System
+          Featured Project
         </h2>
         <p className="text-xs sm:text-sm text-[#9c9c9d] mt-2 max-w-xl leading-relaxed">
-          Architected and engineered a live production web application and digital ordering platform for BeCoffee in the Philippines.
+          Production web application and digital ordering platform built for BeCoffee in Zamboanga City.
         </p>
       </div>
 
@@ -83,9 +80,6 @@ export default function Projects() {
             <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-[#07080a]/90 backdrop-blur-md border border-[#242728] text-[11px] sm:text-xs font-mono text-white shadow-lg">
               <Coffee className="w-3.5 h-3.5 text-[#ff6161]" />
               <span>{flagshipProject.category}</span>
-            </div>
-            <div className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-[#07080a]/90 backdrop-blur-md border border-[#242728] text-[11px] sm:text-xs font-mono text-[#59d499] shadow-lg">
-              {flagshipProject.stats}
             </div>
           </div>
         </div>
@@ -144,9 +138,10 @@ export default function Projects() {
                 href={flagshipProject.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="min-h-[44px] flex items-center gap-2 px-4 py-2 rounded-lg bg-[#ffffff] text-[#000000] text-xs sm:text-sm font-semibold hover:bg-[#e8e8e8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors shadow-md"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-lg bg-[#ffffff] text-[#000000] hover:bg-[#e8e8e8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors shadow-md"
+                aria-label={`Visit ${flagshipProject.title} live website`}
+                title="Live Website"
               >
-                <span>Live Site</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>

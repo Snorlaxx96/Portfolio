@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail, Phone, Headphones, Check } from "lucide-react";
+import { ArrowRight, Mail, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 import * as d3 from "d3";
@@ -21,14 +21,8 @@ const smoothEase = [0.25, 0.1, 0.25, 1] as const;
 const CONTACT_LINKS = [
   {
     icon: Mail,
-    label: "contact@yoursaas.ai",
-    href: "mailto:contact@yoursaas.ai",
-  },
-  { icon: Phone, label: "+1 (800) 321 XX21", href: "tel:+18003214321" },
-  {
-    icon: Headphones,
-    label: "support@yoursaas.ai",
-    href: "mailto:support@yoursaas.ai",
+    label: "giselobunao@gmail.com",
+    href: "mailto:giselobunao@gmail.com",
   },
 ];
 
@@ -826,11 +820,10 @@ export default function ContactWithGlobe({
           >
             <div className="flex flex-col gap-1">
               <h3 className="text-lg sm:text-xl font-semibold text-white">
-                Get in touch
+                Contact Details
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-xs">
-                Reach out via any channel below. We typically reply within one
-                business day.
+                Feel free to email me directly or connect through my social profiles.
               </p>
             </div>
 
@@ -886,13 +879,9 @@ export default function ContactWithGlobe({
                 <h3 className="text-base sm:text-lg font-semibold text-white tracking-tight">
                   Send a Message
                 </h3>
-                <span className="text-xs font-mono text-[#59d499] uppercase px-2.5 py-0.5 rounded bg-[#59d499]/10 border border-[#59d499]/20 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#59d499] animate-pulse" />
-                  Direct Uplink
-                </span>
               </div>
               <p className="text-xs text-zinc-400 mt-1">
-                Fill out the form below and I will get back to you promptly.
+                Leave a message and I will reply as soon as possible.
               </p>
             </div>
 
@@ -908,10 +897,10 @@ export default function ContactWithGlobe({
                   <Check className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <h4 className="text-base font-semibold text-white">
-                  Transmission Dispatched
+                  Message Sent
                 </h4>
                 <p className="text-xs text-zinc-400 max-w-xs break-words leading-relaxed">
-                  Thank you, <span className="font-medium text-white">{formData.name}</span>. Your inquiry has been routed directly to my notification stream.
+                  Thank you, <span className="font-medium text-white">{formData.name}</span>. Your message has been received and I will be in touch.
                 </p>
                 <button
                   type="button"
@@ -921,7 +910,7 @@ export default function ContactWithGlobe({
                   }}
                   className="mt-2 text-xs font-mono text-zinc-400 hover:text-white underline cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-white/40 rounded"
                 >
-                  Send another transmission
+                  Send another message
                 </button>
               </div>
             ) : (
@@ -1004,7 +993,7 @@ export default function ContactWithGlobe({
                     required
                     aria-required="true"
                     maxLength={2500}
-                    placeholder="Details about your system architecture, project requirements, or team..."
+                    placeholder="Your message or inquiry..."
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -1018,14 +1007,12 @@ export default function ContactWithGlobe({
                     disabled={isSubmitting}
                     className="w-full sm:w-fit min-h-[44px] px-6 rounded-lg font-medium text-sm bg-white hover:bg-[#e8e8e8] text-black group transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    <span>{isSubmitting ? "Transmitting..." : "Submit"}</span>
+                    <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden="true" />
                   </Button>
 
                   <div className="flex items-center gap-3 text-xs font-mono text-zinc-500">
-                    <span>TLS Encrypted</span>
-                    <span>·</span>
-                    <span>Typical reply &lt;24h</span>
+                    <span>Direct inbox delivery</span>
                   </div>
                 </div>
               </form>

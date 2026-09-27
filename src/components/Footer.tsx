@@ -20,16 +20,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs text-[#9c9c9d] mt-3 max-w-sm leading-relaxed">
-              Software Engineer & Full-Stack Developer specializing in distributed backend architecture, fault-tolerant infrastructure, and high-performance WebGL interfaces.
+              Software Engineer & Full-Stack Developer based in Zamboanga City, Philippines. Building responsive web applications and clean backend services.
             </p>
-
-            {/* System Status Pill */}
-            <div className="mt-6 flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-[#0d0d0d] border border-[#242728] w-fit">
-              <span className="w-2 h-2 rounded-full bg-[#59d499] animate-pulse" />
-              <span className="text-[11px] font-mono text-[#cdcdcd]">
-                All Systems Nominal · Available for Opportunities
-              </span>
-            </div>
           </div>
 
           {/* Directory */}
@@ -40,48 +32,60 @@ export default function Footer() {
             <ul className="space-y-1 text-xs">
               <li>
                 <a href="#work" className="min-h-[36px] flex items-center text-[#9c9c9d] hover:text-white transition-colors">
-                  Featured Works
+                  Projects
                 </a>
               </li>
               <li>
                 <a href="#stack" className="min-h-[36px] flex items-center text-[#9c9c9d] hover:text-white transition-colors">
-                  Engineering Stack
+                  Skills
                 </a>
               </li>
               <li>
                 <a href="#philosophy" className="min-h-[36px] flex items-center text-[#9c9c9d] hover:text-white transition-colors">
-                  Engineering Philosophy
+                  Approach
                 </a>
               </li>
               <li>
                 <a href="#contact" className="min-h-[36px] flex items-center text-[#9c9c9d] hover:text-white transition-colors">
-                  Contact & Inquiries
+                  Contact
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Spec & Architecture */}
+          {/* Connect */}
           <div>
             <div className="text-xs font-mono uppercase tracking-wider text-[#6a6b6c] mb-3">
-              Specifications
+              Connect
             </div>
-            <ul className="space-y-2 text-xs text-[#9c9c9d]">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#ff6161]" />
-                <span>Raycast Design System</span>
+            <ul className="space-y-1 text-xs">
+              <li>
+                <a
+                  href="https://github.com/Snorlaxx96"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="min-h-[36px] flex items-center text-[#9c9c9d] hover:text-white transition-colors"
+                >
+                  GitHub
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#57c1ff]" />
-                <span>Etched Accretion WebGL2</span>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/mhyco-bunao-9b725b350/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="min-h-[36px] flex items-center text-[#9c9c9d] hover:text-white transition-colors"
+                >
+                  LinkedIn
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#59d499]" />
-                <span>TypeScript & Tailwind CSS</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#ffc533]" />
-                <span>Zero Layout Overflow Hygiene</span>
+              <li>
+                <a
+                  href="mailto:giselobunao@gmail.com"
+                  className="min-h-[36px] flex items-center text-[#9c9c9d] hover:text-white transition-colors"
+                >
+                  Email
+                </a>
               </li>
             </ul>
           </div>

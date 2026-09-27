@@ -57,8 +57,8 @@ export default function CommandPalette({
       group: "Navigation",
       items: [
         { label: "Jump to Projects", icon: Navigation, action: () => { window.location.hash = "work"; onClose(); } },
-        { label: "Jump to Tech Stack", icon: Navigation, action: () => { window.location.hash = "stack"; onClose(); } },
-        { label: "Jump to Philosophy", icon: Navigation, action: () => { window.location.hash = "philosophy"; onClose(); } },
+        { label: "Jump to Skills", icon: Navigation, action: () => { window.location.hash = "stack"; onClose(); } },
+        { label: "Jump to Approach", icon: Navigation, action: () => { window.location.hash = "philosophy"; onClose(); } },
         { label: "Jump to Contact", icon: Navigation, action: () => { window.location.hash = "contact"; onClose(); } },
       ],
     },

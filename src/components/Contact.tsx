@@ -33,9 +33,9 @@ export default function Contact() {
   return (
     <div id="contact" className="border-t border-[#242728]">
       <ContactWithGlobe
-        title="Let's Build Something Resilient"
-        subtitle="Contact & Collaboration"
-        description="Whether you have a distributed system to architect, a high-performance web interface to build, or a technical inquiry, my inbox is open."
+        title="Get in Touch"
+        subtitle="Contact"
+        description="Have a project in mind, a question, or a collaboration opportunity? My inbox is always open."
         contactLinks={contactLinks}
       />
     </div>

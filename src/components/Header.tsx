@@ -18,9 +18,9 @@ export default function Header({ onOpenCommand }: HeaderProps) {
   }, [])
 
   const navLinks = [
-    { name: "Work", href: "#work" },
-    { name: "Stack", href: "#stack" },
-    { name: "Philosophy", href: "#philosophy" },
+    { name: "Projects", href: "#work" },
+    { name: "Skills", href: "#stack" },
+    { name: "Approach", href: "#philosophy" },
     { name: "Contact", href: "#contact" },
   ]
 
@@ -103,11 +103,6 @@ export default function Header({ onOpenCommand }: HeaderProps) {
             </a>
           </div>
 
-          {/* Status pill */}
-          <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#101111] border border-[#242728] text-[11px] font-mono text-[#59d499]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#59d499] animate-pulse" />
-            Available for hire
-          </div>
 
           {/* Quick command palette trigger */}
           <button
@@ -143,10 +138,6 @@ export default function Header({ onOpenCommand }: HeaderProps) {
       {/* Mobile dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#0d0d0d]/95 backdrop-blur-xl border-b border-[#242728] px-4 py-4 space-y-2 shadow-2xl animate-in slide-in-from-top-2 duration-200">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#101111] border border-[#242728] text-[11px] font-mono text-[#59d499] w-fit mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#59d499] animate-pulse motion-reduce:animate-none" />
-            Available for hire
-          </div>
           <div className="space-y-1">
             {navLinks.map((link) => (
               <a

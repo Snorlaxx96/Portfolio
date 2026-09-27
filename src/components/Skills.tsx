@@ -1,4 +1,4 @@
-import { Code, Server, Cloud, ShieldCheck, Terminal, Cpu } from "lucide-react"
+import { Code, Server, Cloud, ShieldCheck } from "lucide-react"
 import TiltCard from "./ui/TiltCard"
 
 interface SkillGroup {
@@ -12,59 +12,59 @@ interface SkillGroup {
 
 const skillGroups: SkillGroup[] = [
   {
-    title: "Frontend Engineering",
-    kicker: "Interface & Motion",
+    title: "Frontend Development",
+    kicker: "UI & Interactions",
     icon: Code,
     accentColor: "#57c1ff",
-    description: "Building responsive, sub-millisecond interaction surfaces with strict layout stability.",
+    description: "Developing accessible, responsive web interfaces with modern frameworks and type safety.",
     skills: [
-      { name: "TypeScript / JavaScript (ESNext)", level: "Advanced", desc: "Strict type models & async pipelines" },
-      { name: "React 18 / 19 & Next.js", level: "Production", desc: "Server components, App router, concurrent rendering" },
-      { name: "Tailwind CSS & Design Systems", level: "Expert", desc: "Design tokens, CSS variables, zero-overflow hygiene" },
-      { name: "WebGL2 & Canvas Shader Physics", level: "Applied", desc: "Fragment shaders, procedural math, 60fps buffers" },
-      { name: "State Architecture", level: "Advanced", desc: "Zustand, React Query, XState finite state machines" },
+      { name: "TypeScript / JavaScript (ES6+)", level: "Proficient", desc: "Modern syntax, strict typing, async/await patterns" },
+      { name: "React & Next.js", level: "Proficient", desc: "Component architecture, hooks, state management" },
+      { name: "Tailwind CSS & CSS3", level: "Proficient", desc: "Responsive layout, CSS variables, utility-first design" },
+      { name: "HTML5 & Semantic Web", level: "Advanced", desc: "Accessible DOM structure, WCAG standards, SEO basics" },
+      { name: "WebGL & Canvas", level: "Working", desc: "Custom shader rendering, 2D/3D canvas animations" },
     ],
   },
   {
-    title: "Backend & Distributed Systems",
-    kicker: "Architecture & Data",
+    title: "Backend & Databases",
+    kicker: "Services & Data",
     icon: Server,
     accentColor: "#ff6161",
-    description: "Designing fault-tolerant services, low-latency APIs, and persistent storage layers.",
+    description: "Building server-side applications, REST APIs, and structured relational databases.",
     skills: [
-      { name: "Node.js & Go Runtime", level: "Advanced", desc: "Non-blocking event loop & high-concurrency microservices" },
-      { name: "PostgreSQL & Database Architecture", level: "Production", desc: "Schema normalization, indexing, connection pooling" },
-      { name: "Redis & Distributed Caching", level: "Advanced", desc: "Pub/Sub, rate-limiting algorithms, memory management" },
-      { name: "REST & GraphQL APIs", level: "Production", desc: "Contract testing, versioning, idempotent mutations" },
-      { name: "Python / FastAPI", level: "Advanced", desc: "Async route handlers, background worker queues" },
+      { name: "Node.js & Express", level: "Proficient", desc: "RESTful API routes, middleware, server logic" },
+      { name: "PostgreSQL & MySQL", level: "Proficient", desc: "Relational schema design, SQL queries, indexing" },
+      { name: "Python / FastAPI", level: "Working", desc: "API development, automation scripts, data utilities" },
+      { name: "RESTful API Architecture", level: "Proficient", desc: "HTTP methods, payload validation, status codes" },
+      { name: "Authentication & Auth", level: "Proficient", desc: "JWT tokens, session auth, role authorization" },
     ],
   },
   {
-    title: "Cloud Infrastructure & DevOps",
-    kicker: "Reliability & Scale",
+    title: "DevOps & Cloud",
+    kicker: "Deployment & Environment",
     icon: Cloud,
     accentColor: "#59d499",
-    description: "Automating zero-downtime releases, container orchestration, and edge deployment pipelines.",
+    description: "Configuring development environments, automated builds, and cloud hosting.",
     skills: [
-      { name: "Docker & Containerization", level: "Production", desc: "Multi-stage minimal builds, security hardening" },
-      { name: "Linux Systems & Shell Tooling", level: "Advanced", desc: "Bash/PowerShell automation, kernel tuning, SSH" },
-      { name: "CI/CD & GitHub Actions", level: "Production", desc: "Automated lint gates, regression suites, auto-rollback" },
-      { name: "AWS & Cloud-Native Services", level: "Applied", desc: "EC2, S3, RDS, CloudFront, Lambda serverless" },
-      { name: "Nginx & Reverse Proxies", level: "Production", desc: "SSL termination, load balancing, gzip/brotli compression" },
+      { name: "Git & GitHub", level: "Proficient", desc: "Branching strategies, code reviews, pull requests" },
+      { name: "Docker", level: "Working", desc: "Containerizing local development and app environments" },
+      { name: "Firebase Hosting & Services", level: "Proficient", desc: "Static hosting, Firestore, serverless config" },
+      { name: "CI/CD & GitHub Actions", level: "Working", desc: "Automated linting, tests, and build checks on push" },
+      { name: "Linux / Bash", level: "Proficient", desc: "Shell scripting, command line utilities, SSH" },
     ],
   },
   {
-    title: "Quality, Testing & Security",
-    kicker: "Defensive Coding",
+    title: "Testing & Quality",
+    kicker: "Reliability & Speed",
     icon: ShieldCheck,
     accentColor: "#ffc533",
-    description: "Enforcing OWASP compliance, end-to-end browser audits, and strict regression resistance.",
+    description: "Maintaining reliable software through automated testing, browser checks, and performance reviews.",
     skills: [
-      { name: "Playwright Automated Browser Testing", level: "Expert", desc: "Multi-viewport responsive QA, layout leak audits" },
-      { name: "OWASP Top 10 Defensive Hardening", level: "Advanced", desc: "Input sanitization, CSRF tokens, secure headers" },
-      { name: "Unit & Integration Testing (Vitest/Jest)", level: "Production", desc: "Negative path verification, boundary testing" },
-      { name: "Performance & Lighthouse Audits", level: "Advanced", desc: "Core Web Vitals optimization, asset tree-shaking" },
-      { name: "Observability & Error Tracking", level: "Production", desc: "Structured telemetry logging, latency metrics" },
+      { name: "Playwright Automation", level: "Proficient", desc: "End-to-end browser tests, responsive verification" },
+      { name: "Unit & Integration Tests", level: "Proficient", desc: "Component and utility verification with Vitest/Jest" },
+      { name: "Web Performance (Lighthouse)", level: "Proficient", desc: "Core Web Vitals, asset optimization, fast loading" },
+      { name: "Defensive Web Security", level: "Working", desc: "Input sanitization, CORS, security headers" },
+      { name: "Responsive QA", level: "Proficient", desc: "Mobile-first testing across screen sizes and devices" },
     ],
   },
 ]
@@ -74,10 +74,10 @@ export default function Skills() {
     <section id="stack" className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#242728]">
       <div className="mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-          Engineering Stack & Toolchain
+          Skills & Technologies
         </h2>
         <p className="text-xs sm:text-sm text-[#9c9c9d] mt-2 max-w-xl leading-relaxed">
-          Core technologies and operational competencies deployed in production environments.
+          Languages, frameworks, and tools used for building and deploying software.
         </p>
       </div>
 
@@ -137,16 +137,6 @@ export default function Skills() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Bottom tag */}
-              <div className="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-[#242728] flex items-center justify-between text-[11px] font-mono text-[#9c9c9d]">
-                <span className="flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-[#59d499]" /> Production Verified
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Terminal className="w-3.5 h-3.5 text-[#57c1ff]" /> Modern Tooling
-                </span>
               </div>
             </TiltCard>
           )
