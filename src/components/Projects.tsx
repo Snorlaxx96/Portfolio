@@ -44,13 +44,13 @@ const flagshipProject: Project = {
 
 export default function Projects() {
   return (
-    <section id="work" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#242728]">
+    <section id="work" className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#242728]">
       {/* Section Header */}
-      <div className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight">
+      <div className="mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
           Featured Engineering System
         </h2>
-        <p className="text-sm text-[#9c9c9d] mt-2 max-w-xl">
+        <p className="text-xs sm:text-sm text-[#9c9c9d] mt-2 max-w-xl leading-relaxed">
           Architected and engineered a live production web application and digital ordering platform for BeCoffee in the Philippines.
         </p>
       </div>
@@ -65,7 +65,7 @@ export default function Projects() {
         className="group relative rounded-xl bg-[#0d0d0d] border border-[#242728] hover:border-[#ff6161]/60 transition-colors duration-300 overflow-hidden"
       >
         {/* Media Container with Scrim Overlay */}
-        <div className="relative w-full h-72 sm:h-96 overflow-hidden">
+        <div className="relative w-full h-64 sm:h-96 overflow-hidden">
           <img
             src={flagshipProject.image}
             alt={flagshipProject.title}
@@ -77,36 +77,36 @@ export default function Projects() {
 
           {/* Top Badges - 3D floating layer */}
           <div
-            className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-auto"
+            className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 flex flex-wrap items-center justify-between gap-2 pointer-events-auto"
             style={{ transform: "translateZ(30px)" }}
           >
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#07080a]/90 backdrop-blur-md border border-[#242728] text-xs font-mono text-white shadow-lg">
-              <Coffee className="w-4 h-4 text-[#ff6161]" />
+            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-[#07080a]/90 backdrop-blur-md border border-[#242728] text-[11px] sm:text-xs font-mono text-white shadow-lg">
+              <Coffee className="w-3.5 h-3.5 text-[#ff6161]" />
               <span>{flagshipProject.category}</span>
             </div>
-            <div className="px-3 py-1.5 rounded-lg bg-[#07080a]/90 backdrop-blur-md border border-[#242728] text-xs font-mono text-[#59d499] shadow-lg">
+            <div className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg bg-[#07080a]/90 backdrop-blur-md border border-[#242728] text-[11px] sm:text-xs font-mono text-[#59d499] shadow-lg">
               {flagshipProject.stats}
             </div>
           </div>
         </div>
 
         {/* Card Body */}
-        <div className="p-6 sm:p-8">
-          <div className="text-xs font-mono text-[#9c9c9d] mb-1">
+        <div className="p-5 sm:p-8">
+          <div className="text-[11px] sm:text-xs font-mono text-[#9c9c9d] mb-1">
             {flagshipProject.subtitle}
           </div>
-          <h3 className="text-2xl sm:text-3xl font-semibold text-white group-hover:text-[#ff6161] transition-colors flex items-center gap-2">
+          <h3 className="text-xl sm:text-3xl font-semibold text-white group-hover:text-[#ff6161] transition-colors flex items-center gap-2">
             {flagshipProject.title}
             <ArrowUpRight className="w-5 h-5 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-200" />
           </h3>
-          <p className="text-sm text-[#cdcdcd] mt-3 leading-relaxed max-w-3xl">
+          <p className="text-xs sm:text-sm text-[#cdcdcd] mt-3 leading-relaxed max-w-3xl">
             {flagshipProject.description}
           </p>
 
           {/* Key Architectural Highlights */}
           <div className="mt-6 pt-6 border-t border-[#242728] grid grid-cols-1 sm:grid-cols-2 gap-3">
             {flagshipProject.features.map((feature, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs text-[#cdcdcd]">
+              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#cdcdcd]">
                 <CheckCircle2 className="w-4 h-4 text-[#59d499] mt-0.5 shrink-0" />
                 <span>{feature}</span>
               </div>
@@ -114,12 +114,12 @@ export default function Projects() {
           </div>
 
           {/* Tags and Links */}
-          <div className="mt-8 pt-6 border-t border-[#242728] flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-2">
+          <div className="mt-6 sm:mt-8 pt-6 border-t border-[#242728] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {flagshipProject.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 rounded bg-[#121212] border border-[#242728] text-xs font-mono text-[#9c9c9d]"
+                  className="px-2.5 py-1 rounded bg-[#121212] border border-[#242728] text-[11px] sm:text-xs font-mono text-[#9c9c9d]"
                 >
                   {tag}
                 </span>
@@ -127,14 +127,14 @@ export default function Projects() {
             </div>
 
             <div
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 self-end sm:self-auto"
               style={{ transform: "translateZ(26px)" }}
             >
               <a
                 href={flagshipProject.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-lg bg-[#121212] border border-[#242728] text-[#9c9c9d] hover:text-white hover:border-[#ff6161]/50 transition-colors"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2.5 rounded-lg bg-[#121212] border border-[#242728] text-[#9c9c9d] hover:text-white hover:border-[#ff6161]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors"
                 aria-label={`View ${flagshipProject.title} GitHub repository`}
                 title="GitHub Profile"
               >
@@ -144,7 +144,7 @@ export default function Projects() {
                 href={flagshipProject.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#ffffff] text-[#000000] text-xs font-semibold hover:bg-[#e8e8e8] transition-colors shadow-md"
+                className="min-h-[44px] flex items-center gap-2 px-4 py-2 rounded-lg bg-[#ffffff] text-[#000000] text-xs sm:text-sm font-semibold hover:bg-[#e8e8e8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors shadow-md"
               >
                 <span>Live Site</span>
                 <ExternalLink className="w-4 h-4" />

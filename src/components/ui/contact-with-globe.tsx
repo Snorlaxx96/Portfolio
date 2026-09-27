@@ -779,18 +779,18 @@ export default function ContactWithGlobe({
     <section
       id={id}
       className={cn(
-        "relative w-full bg-transparent overflow-hidden py-20",
+        "relative w-full bg-transparent overflow-hidden py-14 sm:py-20",
         className,
       )}
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col items-center text-center gap-4 mb-12">
+        <div className="flex flex-col items-center text-center gap-3 sm:gap-4 mb-8 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: -12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: smoothEase }}
-            className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-400"
+            className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#ff6161]"
           >
             <span>{subtitle}</span>
           </motion.div>
@@ -800,7 +800,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.15, ease: smoothEase }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight"
           >
             {title}
           </motion.h2>
@@ -810,7 +810,7 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.3, ease: smoothEase }}
-            className="text-base text-zinc-500 dark:text-zinc-400 max-w-md"
+            className="text-xs sm:text-base text-zinc-400 max-w-md leading-relaxed"
           >
             {description}
           </motion.p>
@@ -825,10 +825,10 @@ export default function ContactWithGlobe({
             className="flex flex-col gap-6"
           >
             <div className="flex flex-col gap-1">
-              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">
+              <h3 className="text-lg sm:text-xl font-semibold text-white">
                 Get in touch
               </h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-xs">
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-xs">
                 Reach out via any channel below. We typically reply within one
                 business day.
               </p>
@@ -859,7 +859,7 @@ export default function ContactWithGlobe({
               ))}
             </div>
 
-            <div className="relative overflow-hidden h-56 rounded-xl border border-white/5 bg-[#090a0d]/60 flex items-center justify-center">
+            <div className="relative overflow-hidden h-44 sm:h-56 rounded-xl border border-white/5 bg-[#090a0d]/60 flex items-center justify-center">
               <GlobeWireframe
                 className="w-full aspect-square max-w-full absolute"
                 variant="wireframesolid"
@@ -879,11 +879,11 @@ export default function ContactWithGlobe({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.0, delay: 0.35, ease: smoothEase }}
-            className="rounded-xl border border-[#242728] bg-[#0d0d0d] p-5 sm:p-6 flex flex-col gap-5"
+            className="rounded-xl border border-[#242728] bg-[#0d0d0d] p-4 sm:p-6 flex flex-col gap-4 sm:gap-5"
           >
             <div>
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-white tracking-tight">
+                <h3 className="text-base sm:text-lg font-semibold text-white tracking-tight">
                   Send a Message
                 </h3>
                 <span className="text-xs font-mono text-[#59d499] uppercase px-2.5 py-0.5 rounded bg-[#59d499]/10 border border-[#59d499]/20 flex items-center gap-1.5">
@@ -1012,11 +1012,11 @@ export default function ContactWithGlobe({
                   />
                 </div>
 
-                <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-fit h-9 px-5 rounded-lg font-medium text-sm bg-white hover:bg-[#e8e8e8] text-black group transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full sm:w-fit min-h-[44px] px-6 rounded-lg font-medium text-sm bg-white hover:bg-[#e8e8e8] text-black group transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     <span>{isSubmitting ? "Transmitting..." : "Submit"}</span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden="true" />

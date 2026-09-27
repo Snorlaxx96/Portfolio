@@ -124,15 +124,16 @@ export default function Header({ onOpenCommand }: HeaderProps) {
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={onOpenCommand}
-            className="p-2 rounded-md bg-[#121212] border border-[#242728] text-[#cdcdcd]"
+            className="min-w-[44px] min-h-[44px] rounded-lg bg-[#121212] border border-[#242728] text-[#cdcdcd] flex items-center justify-center hover:text-white hover:border-[#ff6161]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors cursor-pointer"
             aria-label="Open command palette"
           >
             <Terminal className="w-4 h-4 text-[#ff6161]" />
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-md bg-[#121212] border border-[#242728] text-white"
+            className="min-w-[44px] min-h-[44px] rounded-lg bg-[#121212] border border-[#242728] text-white flex items-center justify-center hover:border-[#ff6161]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white transition-colors cursor-pointer"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -141,27 +142,29 @@ export default function Header({ onOpenCommand }: HeaderProps) {
 
       {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0d0d0d] border-b border-[#242728] px-4 py-4 space-y-3">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#101111] border border-[#242728] text-[11px] font-mono text-[#59d499] w-fit mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#59d499] animate-pulse" />
+        <div className="md:hidden bg-[#0d0d0d]/95 backdrop-blur-xl border-b border-[#242728] px-4 py-4 space-y-2 shadow-2xl animate-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#101111] border border-[#242728] text-[11px] font-mono text-[#59d499] w-fit mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#59d499] animate-pulse motion-reduce:animate-none" />
             Available for hire
           </div>
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm font-medium text-[#cdcdcd] hover:text-white py-1"
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className="pt-3 border-t border-[#242728] flex items-center gap-4">
+          <div className="space-y-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="min-h-[44px] flex items-center px-3 py-2.5 rounded-lg text-sm font-medium text-[#cdcdcd] hover:text-white hover:bg-white/[0.04] active:bg-white/[0.08] transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+          <div className="pt-3 border-t border-[#242728] flex items-center gap-2 flex-wrap">
             <a
               href="https://github.com/Snorlaxx96"
               target="_blank"
               rel="noreferrer"
-              className="text-[#9c9c9d] hover:text-white"
+              className="min-w-[44px] min-h-[44px] rounded-lg bg-[#121212] border border-[#242728] flex items-center justify-center text-[#9c9c9d] hover:text-white hover:border-[#ff6161]/50 transition-colors"
               aria-label="GitHub Profile"
             >
               <Github className="w-4 h-4" />
@@ -170,7 +173,7 @@ export default function Header({ onOpenCommand }: HeaderProps) {
               href="https://www.linkedin.com/in/mhyco-bunao-9b725b350/"
               target="_blank"
               rel="noreferrer"
-              className="text-[#9c9c9d] hover:text-white"
+              className="min-w-[44px] min-h-[44px] rounded-lg bg-[#121212] border border-[#242728] flex items-center justify-center text-[#9c9c9d] hover:text-white hover:border-[#ff6161]/50 transition-colors"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-4 h-4" />
@@ -179,7 +182,7 @@ export default function Header({ onOpenCommand }: HeaderProps) {
               href="https://www.facebook.com/giselo.bunao"
               target="_blank"
               rel="noreferrer"
-              className="text-[#9c9c9d] hover:text-white"
+              className="min-w-[44px] min-h-[44px] rounded-lg bg-[#121212] border border-[#242728] flex items-center justify-center text-[#9c9c9d] hover:text-white hover:border-[#ff6161]/50 transition-colors"
               aria-label="Facebook Profile"
             >
               <Facebook className="w-4 h-4" />
@@ -188,14 +191,14 @@ export default function Header({ onOpenCommand }: HeaderProps) {
               href="https://www.instagram.com/mhhycooo/"
               target="_blank"
               rel="noreferrer"
-              className="text-[#9c9c9d] hover:text-white"
+              className="min-w-[44px] min-h-[44px] rounded-lg bg-[#121212] border border-[#242728] flex items-center justify-center text-[#9c9c9d] hover:text-white hover:border-[#ff6161]/50 transition-colors"
               aria-label="Instagram Profile"
             >
               <Instagram className="w-4 h-4" />
             </a>
             <a
               href="mailto:giselobunao@gmail.com"
-              className="text-[#9c9c9d] hover:text-white"
+              className="min-w-[44px] min-h-[44px] rounded-lg bg-[#121212] border border-[#242728] flex items-center justify-center text-[#9c9c9d] hover:text-white hover:border-[#ff6161]/50 transition-colors"
               aria-label="Send Email"
             >
               <Mail className="w-4 h-4" />

@@ -71,17 +71,17 @@ const skillGroups: SkillGroup[] = [
 
 export default function Skills() {
   return (
-    <section id="stack" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#242728]">
-      <div className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-white tracking-tight">
+    <section id="stack" className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[#242728]">
+      <div className="mb-8 sm:mb-12">
+        <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
           Engineering Stack & Toolchain
         </h2>
-        <p className="text-sm text-[#9c9c9d] mt-2 max-w-xl">
+        <p className="text-xs sm:text-sm text-[#9c9c9d] mt-2 max-w-xl leading-relaxed">
           Core technologies and operational competencies deployed in production environments.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {skillGroups.map((group) => {
           const Icon = group.icon
           return (
@@ -90,19 +90,19 @@ export default function Skills() {
               maxTilt={4}
               scale={1.01}
               glareOpacity={0.06}
-              className="rounded-xl bg-[#0d0d0d] border border-[#242728] p-6 flex flex-col justify-between hover:border-[#373a3c] transition-colors"
+              className="rounded-xl bg-[#0d0d0d] border border-[#242728] p-4 sm:p-6 flex flex-col justify-between hover:border-[#ff6161]/40 transition-colors"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <div className="flex items-center gap-2.5">
                     <div
-                      className="w-8 h-8 rounded-lg bg-[#121212] border border-[#242728] flex items-center justify-center"
+                      className="w-8 h-8 rounded-lg bg-[#121212] border border-[#242728] flex items-center justify-center shrink-0"
                       style={{ color: group.accentColor }}
                     >
                       <Icon className="w-4 h-4" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-white tracking-tight">
+                      <h3 className="text-sm sm:text-base font-semibold text-white tracking-tight">
                         {group.title}
                       </h3>
                       <div className="text-[11px] font-mono text-[#9c9c9d]">
@@ -112,26 +112,26 @@ export default function Skills() {
                   </div>
                 </div>
 
-                <p className="text-xs text-[#9c9c9d] mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#9c9c9d] mb-4 sm:mb-6 leading-relaxed">
                   {group.description}
                 </p>
 
                 {/* Skills list */}
-                <div className="space-y-3">
+                <div className="space-y-2.5 sm:space-y-3">
                   {group.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="p-3 rounded-lg bg-[#121212] border border-[#242728] flex items-start justify-between gap-3 group hover:border-[#373a3c] transition-colors"
+                      className="p-2.5 sm:p-3 rounded-lg bg-[#121212] border border-[#242728] flex items-start justify-between gap-2.5 sm:gap-3 group hover:border-[#ff6161]/30 transition-colors"
                     >
                       <div>
-                        <div className="text-xs font-medium text-white group-hover:text-[#ff6161] transition-colors">
+                        <div className="text-xs sm:text-sm font-medium text-white group-hover:text-[#ff6161] transition-colors">
                           {skill.name}
                         </div>
-                        <div className="text-[11px] text-[#9c9c9d] mt-0.5">
+                        <div className="text-[11px] sm:text-xs text-[#9c9c9d] mt-0.5">
                           {skill.desc}
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#18191a] text-[#cdcdcd] border border-[#242728] whitespace-nowrap">
+                      <span className="text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded bg-[#18191a] text-[#cdcdcd] border border-[#242728] whitespace-nowrap shrink-0 mt-0.5">
                         {skill.level}
                       </span>
                     </div>
@@ -140,7 +140,7 @@ export default function Skills() {
               </div>
 
               {/* Bottom tag */}
-              <div className="mt-6 pt-4 border-t border-[#242728] flex items-center justify-between text-[11px] font-mono text-[#6a6b6c]">
+              <div className="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-[#242728] flex items-center justify-between text-[11px] font-mono text-[#9c9c9d]">
                 <span className="flex items-center gap-1.5">
                   <Cpu className="w-3.5 h-3.5 text-[#59d499]" /> Production Verified
                 </span>

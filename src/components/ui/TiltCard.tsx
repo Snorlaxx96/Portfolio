@@ -36,7 +36,7 @@ export default function TiltCard({
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
-      if (prefersReducedMotion || !cardRef.current) return
+      if (prefersReducedMotion || !cardRef.current || e.pointerType === "touch") return
       const rect = cardRef.current.getBoundingClientRect()
       const x = e.clientX - rect.left
       const y = e.clientY - rect.top
@@ -67,8 +67,8 @@ export default function TiltCard({
     [maxTilt, scale, glare, prefersReducedMotion]
   )
 
-  const handlePointerEnter = useCallback(() => {
-    if (!prefersReducedMotion) {
+  const handlePointerEnter = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (!prefersReducedMotion && e.pointerType !== "touch") {
       setIsHovered(true)
     }
   }, [prefersReducedMotion])

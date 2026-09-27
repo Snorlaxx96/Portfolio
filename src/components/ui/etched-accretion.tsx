@@ -541,13 +541,13 @@ const INTERACTIVE = "a,button,input,textarea,select,label,summary,[role=button],
 
 export default function EtchedAccretion({
   height = "100svh",
-  preset = "ash",
+  preset = "crimson",
   params,
   interactive = true,
   renderScale = 1,
   children,
   className = "",
-  "aria-label": ariaLabel = "A black hole wrapped in a monochrome ash accretion disk",
+  "aria-label": ariaLabel = "A black hole wrapped in a crimson singularity accretion disk",
 }: EtchedAccretionProps) {
   const rootRef = React.useRef<HTMLElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
