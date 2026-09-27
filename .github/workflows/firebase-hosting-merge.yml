@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
       - run: npm ci
       - run: npm run build
@@ -19,12 +19,13 @@ jobs:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO }}
         run: |
           if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
-            echo "Error: FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO secret is not set"
+            echo "::error title=Missing Secret::Secret FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO is empty or not configured in repository secrets."
             exit 1
           fi
-          KEY_FILE="$(mktemp)"
-          printf '%s\n' "$FIREBASE_SERVICE_ACCOUNT" > "$KEY_FILE"
+          echo "Secret is present. Key length: ${#FIREBASE_SERVICE_ACCOUNT}"
+          KEY_FILE="/tmp/service-account.json"
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$KEY_FILE"
           export GOOGLE_APPLICATION_CREDENTIALS="$KEY_FILE"
-          npx --yes firebase-tools deploy --only hosting --project snorlaxx-portfolio
+          npx --yes firebase-tools deploy --only hosting --project snorlaxx-portfolio --non-interactive
           rm -f "$KEY_FILE"
 
