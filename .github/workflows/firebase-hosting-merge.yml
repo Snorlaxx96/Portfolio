@@ -14,19 +14,17 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
-      - name: Deploy mhyco site
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO }}
-          channelId: live
-          projectId: snorlaxx-portfolio
-          target: mhyco
-      - name: Deploy snorlaxx-portfolio site
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO }}
-          channelId: live
-          projectId: snorlaxx-portfolio
-          target: snorlaxx-portfolio
+      - name: Deploy to Firebase Hosting
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO }}
+        run: |
+          if [ -z "$FIREBASE_SERVICE_ACCOUNT" ]; then
+            echo "Error: FIREBASE_SERVICE_ACCOUNT_SNORLAXX_PORTFOLIO secret is not set"
+            exit 1
+          fi
+          KEY_FILE="$(mktemp)"
+          printf '%s\n' "$FIREBASE_SERVICE_ACCOUNT" > "$KEY_FILE"
+          export GOOGLE_APPLICATION_CREDENTIALS="$KEY_FILE"
+          npx --yes firebase-tools deploy --only hosting --project snorlaxx-portfolio
+          rm -f "$KEY_FILE"
+
