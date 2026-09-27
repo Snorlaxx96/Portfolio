@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "site": "mhyco",
+      "target": "mhyco",
       "public": "dist",
       "ignore": [
         "firebase.json",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "site": "snorlaxx-portfolio",
+      "target": "snorlaxx-portfolio",
       "public": "dist",
       "ignore": [
         "firebase.json",

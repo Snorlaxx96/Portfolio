@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "snorlaxx-portfolio"
-  }
+  },
+  "targets": {
+    "snorlaxx-portfolio": {
+      "hosting": {
+        "mhyco": [
+          "mhyco"
+        ],
+        "snorlaxx-portfolio": [
+          "snorlaxx-portfolio"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
