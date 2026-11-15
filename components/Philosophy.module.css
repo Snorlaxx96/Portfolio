@@ -1,0 +1,89 @@
+.section {
+  position: relative;
+  height: 340vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Still picture shown until WebGL proves it can draw (and forever if it cannot) */
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: flex-end;
+  gap: 0 0.6em;
+  margin: 0;
+  padding: 0 var(--gutter);
+  list-style: none;
+  font-size: clamp(40px, 7vw, 112px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: rgb(238 237 230 / 0.12);
+  transform: rotate(-8deg) scale(1.1);
+}
+.fallback [data-accent="true"] {
+  color: var(--accent);
+}
+.section[data-gl="on"] .fallback {
+  display: none;
+}
+
+.overlay {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-top: calc(var(--header-height) + 24px);
+  padding-bottom: 24px;
+  pointer-events: none;
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: clamp(40px, 7.6vw, 128px);
+  font-weight: 800;
+  --wdth-display: 122;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  /* a scrim behind the type keeps contrast over the moving words */
+  text-shadow: 0 0 40px var(--night), 0 0 12px var(--night);
+}
+
+.line:nth-child(2) {
+  padding-left: 1.6em;
+}
+.line:nth-child(3) {
+  padding-left: 0.6em;
+}
+
+.hint {
+  margin: 0;
+  color: var(--night-muted);
+}
+
+.section[data-static="true"] {
+  height: auto;
+}
+.section[data-static="true"] .sticky {
+  position: relative;
+}

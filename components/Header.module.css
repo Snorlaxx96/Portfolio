@@ -1,0 +1,174 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  color: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gutter);
+  height: var(--header-height);
+  padding-top: 14px;
+}
+
+.mark,
+.cols,
+.menuBtn {
+  pointer-events: auto;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: -14px 0 0 -14px;
+  transition: transform 300ms var(--ease-out);
+}
+.mark:hover {
+  transform: rotate(90deg);
+}
+.mark:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
+.cols {
+  display: none;
+  flex: 1;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  margin-top: -14px;
+  padding-top: 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.label {
+  transition: transform 300ms var(--ease-out);
+}
+.col:hover .label {
+  transform: translateX(4px);
+}
+
+.track {
+  position: relative;
+  display: block;
+  height: 1px;
+  background: color-mix(in srgb, currentColor 30%, transparent);
+  overflow: hidden;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+}
+
+.col[aria-current="true"] .label::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  vertical-align: 2px;
+  background: currentColor;
+}
+
+/* Difference blending turns violet over the acid contact band, so switch to plain graphite there */
+.header[data-tone="accent"] {
+  mix-blend-mode: normal;
+  color: var(--graphite);
+}
+
+.menuBtn {
+  margin-left: auto;
+  min-width: 56px;
+  min-height: 48px;
+  margin-top: -14px;
+  padding: 0 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (min-width: 900px) {
+  .cols {
+    display: grid;
+  }
+  .menuBtn {
+    display: none;
+  }
+}
+
+/* Full-screen menu (mobile) */
+.sheet {
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--night);
+  color: var(--night-ink);
+  mix-blend-mode: normal;
+  pointer-events: auto;
+}
+.sheet::backdrop {
+  background: transparent;
+}
+.sheet[open] {
+  display: flex;
+  flex-direction: column;
+  animation: sheetIn 420ms var(--ease-out);
+}
+@keyframes sheetIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+.sheetTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+.sheetTop .menuBtn {
+  margin-top: 0;
+}
+
+.sheetList {
+  list-style: none;
+  margin: auto 0 0;
+  padding-bottom: 32px;
+}
+.sheetList a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--night-border);
+  font-size: clamp(36px, 11vw, 64px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.sheetList a .mono {
+  color: var(--night-muted);
+}

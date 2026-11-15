@@ -1,0 +1,125 @@
+.section {
+  position: relative;
+  padding-block: 120px;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 64px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(40px, 6.2vw, 104px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.introText {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin-inline: var(--gutter);
+  padding-block: 32px 48px;
+  border-top: 1px solid var(--border);
+}
+
+.panelHead {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.num {
+  color: var(--muted);
+}
+
+.step {
+  margin: 0;
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 900;
+  --wdth-display: 130;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.diagram {
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+  color: var(--ink);
+}
+
+.text {
+  margin: 0 0 20px;
+  max-width: 44ch;
+  font-size: 18px;
+}
+
+.out {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+.out li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* Desktop: horizontal track pinned by CSS sticky; JS sets the section height */
+.section[data-horizontal="true"] {
+  padding-block: 0;
+}
+.section[data-horizontal="true"] .sticky {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  overflow: hidden;
+}
+.section[data-horizontal="true"] .track {
+  flex-direction: row;
+  height: 100%;
+  width: max-content;
+  will-change: transform;
+}
+.section[data-horizontal="true"] .intro {
+  justify-content: center;
+  width: 46vw;
+  padding-bottom: 0;
+}
+.section[data-horizontal="true"] .panel {
+  width: 52vw;
+  margin: 0;
+  padding: calc(var(--header-height) + 32px) 48px 48px;
+  border-top: 0;
+  border-left: 1px solid var(--border);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 48px;
+}
+.section[data-horizontal="true"] .panelHead {
+  grid-column: 1 / -1;
+}
+.section[data-horizontal="true"] .diagram {
+  align-self: end;
+  width: 100%;
+  max-width: 320px;
+}
+.section[data-horizontal="true"] .body {
+  align-self: end;
+}

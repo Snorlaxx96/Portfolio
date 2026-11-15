@@ -1,0 +1,144 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding-top: calc(var(--header-height) + 24px);
+  overflow: hidden;
+}
+
+.top {
+  row-gap: 32px;
+  align-items: start;
+}
+
+.meta {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.meta p {
+  margin: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-height: 48px;
+  margin-top: -8px;
+  padding: 0 18px;
+  border-radius: 4px;
+  background: var(--acid);
+  color: var(--graphite);
+  font-size: 15px;
+  font-weight: 700;
+  transition: background 200ms var(--ease-out), transform 60ms ease-out;
+}
+.cta svg {
+  transition: transform 300ms var(--ease-out);
+}
+.cta:hover {
+  background: var(--paper);
+  color: var(--graphite);
+}
+.cta:hover svg {
+  transform: translate(2px, -2px);
+}
+.cta:active {
+  transform: scale(0.97);
+}
+.cta:focus-visible {
+  outline-color: var(--acid);
+}
+
+.intro {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: clamp(28px, 4.2vw, 56px);
+  font-weight: 600;
+  font-variation-settings: "wdth" 108;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+@media (min-width: 768px) {
+  .meta {
+    grid-column: 1 / span 4;
+  }
+  .intro {
+    grid-column: 7 / -1;
+  }
+  .cta {
+    grid-column: 7 / -1;
+  }
+}
+
+@media (pointer: coarse) {
+  .coord {
+    visibility: hidden;
+  }
+}
+
+/* On phones the fitted wordmark is short, so a full-height hero leaves a hole: let it size to content */
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+  }
+  .hero .foot {
+    margin-top: 96px;
+  }
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-bottom: 12px;
+}
+
+.coord {
+  white-space: pre;
+}
+
+.title {
+  margin: 0;
+  padding-bottom: 28px;
+  font-weight: inherit;
+}
+
+.word {
+  width: 100%;
+  /* width is read by JS; inner content is scaled to fit it */
+}
+
+.inner {
+  display: inline-flex;
+  white-space: nowrap;
+  font-size: 22vw;
+  font-weight: 900;
+  line-height: 0.74;
+  letter-spacing: -0.03em;
+  transform-origin: left bottom;
+  will-change: transform;
+}
+
+.clip {
+  display: inline-block;
+  overflow: hidden;
+  padding-top: 0.04em;
+  padding-bottom: 0.03em;
+}
+
+.letter {
+  display: inline-block;
+  font-variation-settings: "wdth" var(--w, 122);
+}
