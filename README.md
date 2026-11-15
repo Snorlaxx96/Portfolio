@@ -18,7 +18,6 @@ Open http://localhost:3000. For a production build, run `npm run build` and then
 Every word on the site lives in [`content/site.ts`](content/site.ts): name, intro, email, socials, principles, process stages, projects and services.
 
 - The six projects are **samples** (`sample: true`). Replace them with real work. The "Sample case studies" label disappears once no project is marked as a sample.
-- `email` is set to `hello@example.com`. Change it to your real address.
 - Covers are generated SVG posters ([`components/Cover.tsx`](components/Cover.tsx)). Swap in real project images when you have them.
 
 ## Design

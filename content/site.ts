@@ -22,8 +22,7 @@ export const site = {
   intro: "Identity, interface and space, drawn with the same pencil.",
   lede: "I build brands, products and rooms that hold their shape long after the first look.",
   availability: "Booking projects for early 2027",
-  // Replace with your real address. example.com is a reserved domain and delivers nowhere.
-  email: "hello@example.com",
+  email: "giselobunao@gmail.com",
   socials: [] as { label: string; href: string }[],
 };
 
