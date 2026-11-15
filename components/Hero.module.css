@@ -126,16 +126,23 @@
   font-size: 22vw;
   font-weight: 900;
   line-height: 0.74;
-  letter-spacing: -0.03em;
+  /* tracking lives on .clip margins so the last glyph keeps its full width */
+  letter-spacing: 0;
   transform-origin: left bottom;
   will-change: transform;
 }
 
 .clip {
   display: inline-block;
-  overflow: hidden;
+  /* clip only top and bottom (for the rise-in); sideways overflow must stay visible
+     or glyphs wider than their tightened box lose their right edge */
+  clip-path: inset(0 -0.5em 0 -0.5em);
   padding-top: 0.04em;
   padding-bottom: 0.03em;
+}
+
+.clip:not(:last-child) {
+  margin-right: -0.03em;
 }
 
 .letter {

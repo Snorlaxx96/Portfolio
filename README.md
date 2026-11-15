@@ -1,4 +1,4 @@
-# BUNAO: portfolio of Mhyco Giselo P. Bunao
+# MHYCO: portfolio of Mhyco Giselo P. Bunao
 
 A one-page portfolio for a multidisciplinary designer working across identity, interface and space.
 

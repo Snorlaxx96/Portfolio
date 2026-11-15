@@ -1,4 +1,4 @@
-# DESIGN.md — BUNAO
+# DESIGN.md — MHYCO
 
 Reading this as: a portfolio for creative directors and founders, with an acid-night club-poster language, leaning toward the santalarch.com grid pushed dark and loud.
 

@@ -17,7 +17,7 @@ export type Project = {
 
 export const site = {
   name: "Mhyco Giselo P. Bunao",
-  wordmark: "BUNAO",
+  wordmark: "MHYCO",
   role: "Multidisciplinary designer",
   intro: "Identity, interface and space, drawn with the same pencil.",
   lede: "I build brands, products and rooms that hold their shape long after the first look.",
