@@ -81,8 +81,9 @@ export function Works() {
                 className={`${styles.row} grid12`}
                 aria-expanded={isOpen}
                 aria-controls={`work-${p.slug}`}
-                onPointerEnter={() => setHover(i)}
-                onFocus={() => setHover(i)}
+                // Touch taps fire pointerenter too; only a real mouse should dim the other rows.
+                onPointerEnter={(e) => e.pointerType === "mouse" && setHover(i)}
+                onFocus={(e) => e.currentTarget.matches(":focus-visible") && setHover(i)}
                 onBlur={() => setHover(null)}
                 onClick={() => setOpen(isOpen ? null : i)}
               >

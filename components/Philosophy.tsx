@@ -151,7 +151,8 @@ export function Philosophy() {
             mesh.getWorldPosition(tmp);
             const front = (tmp.z / radius + 1) / 2;
             const vert = 1 - Math.min(1, Math.abs(tmp.y) / 5.5);
-            mat.opacity = (0.08 + front * 0.92) * Math.max(0, vert);
+            // On phones the words share the narrow screen with the title, so they stay dimmer.
+            mat.opacity = (0.08 + front * 0.92) * Math.max(0, vert) * (small ? 0.42 : 1);
           }
           renderer.render(scene, camera);
         };

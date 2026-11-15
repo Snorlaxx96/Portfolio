@@ -172,3 +172,40 @@
 .sheetList a .mono {
   color: var(--night-muted);
 }
+
+/* Phones and tablets: the difference-blended bare text collides with content scrolling under it,
+   so the two controls become small opaque chips that read on every band. */
+@media (max-width: 899px) {
+  .header,
+  .header[data-tone="accent"] {
+    mix-blend-mode: normal;
+    color: var(--paper);
+  }
+  .row {
+    align-items: center;
+    padding-top: max(8px, env(safe-area-inset-top));
+  }
+  .mark,
+  .menuBtn {
+    height: 44px;
+    margin: 0;
+    border: 1px solid rgb(238 237 230 / 0.14);
+    border-radius: 4px;
+    background: rgb(14 15 12 / 0.82);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  .mark {
+    width: 44px;
+  }
+  .menuBtn {
+    min-width: 0;
+    min-height: 44px;
+    margin-left: auto;
+    padding: 0 16px;
+  }
+  .menuBtn:active,
+  .mark:active {
+    transform: scale(0.96);
+  }
+}

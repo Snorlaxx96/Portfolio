@@ -28,7 +28,7 @@
   color: var(--muted);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .head > :first-child {
     grid-column: 1 / span 3;
     align-self: start;
@@ -55,14 +55,14 @@
 }
 .cols > :nth-child(2),
 .name {
-  grid-column: span 7;
+  grid-column: span 8;
 }
 .cols > :nth-child(3),
 .disc {
   grid-column: span 3;
 }
 .year {
-  grid-column: span 3;
+  grid-column: span 2;
   text-align: right;
 }
 
@@ -70,7 +70,7 @@
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .hideSm {
     display: block;
   }
@@ -115,7 +115,7 @@
 }
 
 .name {
-  font-size: clamp(26px, 4vw, 58px);
+  font-size: clamp(24px, 4vw, 58px);
   font-weight: 800;
   font-variation-settings: "wdth" 112;
   line-height: 1;

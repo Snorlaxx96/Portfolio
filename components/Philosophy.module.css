@@ -3,6 +3,13 @@
   height: 340vh;
 }
 
+/* Phones: the helix needs far less travel, and 3.4 screens of thumb-scrolling drags */
+@media (max-width: 767px) {
+  .section {
+    height: 230svh;
+  }
+}
+
 .sticky {
   position: sticky;
   top: 0;
