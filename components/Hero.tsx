@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { site } from "@/content/site";
 import { getGsap, prefersReducedMotion } from "./motion";
+import { onIntroDone } from "./Preloader";
 import { scrollToId } from "./SmoothScroll";
 import styles from "./Hero.module.css";
 
@@ -91,12 +92,19 @@ export function Hero() {
       section.addEventListener("pointerleave", onLeave);
       t0 = performance.now();
       raf = requestAnimationFrame(loop);
-      gsap.from(letters, { yPercent: 105, duration: 1.1, ease: "expo.out", stagger: 0.07, delay: 0.15 });
-      gsap.from(`.${styles.reveal}`, { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.08, delay: 0.5 });
     }
+
+    // The entrance waits for the preloader: hide the letters now, play the rise once it hands over.
+    if (!reduce) gsap.set(letters, { yPercent: 105 });
+    const stopWaiting = onIntroDone(() => {
+      if (reduce) return;
+      gsap.to(letters, { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.07 });
+      gsap.from(`.${styles.reveal}`, { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.08, delay: 0.3 });
+    });
 
     window.addEventListener("resize", fit);
     return () => {
+      stopWaiting();
       cancelAnimationFrame(raf);
       section.removeEventListener("pointermove", onMove);
       section.removeEventListener("pointerleave", onLeave);

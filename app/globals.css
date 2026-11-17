@@ -184,3 +184,9 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* While the preloader covers the page, nothing underneath should scroll */
+html.is-intro,
+html.is-intro body {
+  overflow: hidden;
+}
