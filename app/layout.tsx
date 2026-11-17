@@ -28,9 +28,18 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+// Runs before first paint: repeat visitors in this session never see the cover flash, and first-time
+// visitors get the scroll lock before React hydrates. Static string, no user input.
+const introFlag = `try{var d=document.documentElement;d.classList.add(sessionStorage.getItem("mhyco:intro-seen")==="1"?"intro-seen":"is-intro")}catch(e){document.documentElement.classList.add("is-intro")}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${anybody.variable} ${mono.variable}`}>
+    // the head script adds classes to <html> before hydration, so React must not treat that as a mismatch
+    <html lang="en" className={`${anybody.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        {/* inline so it runs before paint; the content is the constant above, never user data */}
+        <script id="intro-flag" dangerouslySetInnerHTML={{ __html: introFlag }} />
+      </head>
       <body>{children}</body>
     </html>
   );

@@ -185,6 +185,11 @@ button {
   }
 }
 
+/* Repeat visit in this session (set by the head script before first paint): no cover at all */
+html.intro-seen [data-preloader] {
+  display: none;
+}
+
 /* While the preloader covers the page, nothing underneath should scroll */
 html.is-intro,
 html.is-intro body {

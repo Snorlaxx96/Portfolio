@@ -44,6 +44,7 @@ export function Hero() {
     let t0 = performance.now();
     const fine = window.matchMedia("(pointer: fine)").matches;
 
+    let running = false;
     const loop = (now: number) => {
       const rect = inner.getBoundingClientRect();
       // On touch screens a slow wave runs through the word instead of following a cursor.
@@ -62,20 +63,34 @@ export function Hero() {
           target[i] = Math.min(WDTH_MAX, Math.max(WDTH_MIN, WDTH_REST + (v - mean) * 190));
         });
       }
+      let moving = false;
       letters.forEach((l, i) => {
-        current[i] += (target[i] - current[i]) * 0.12;
+        const delta = target[i] - current[i];
+        if (Math.abs(delta) > 0.02) moving = true;
+        current[i] += delta * 0.12;
         l.style.setProperty("--w", current[i].toFixed(2));
       });
       // Keep the word exactly full-bleed while letters trade width with each other.
-      inner.style.transform = "none";
+      // scrollWidth ignores transforms, so one layout read per frame is enough (no reset to "none").
       const scale = word.clientWidth / inner.scrollWidth;
       inner.style.transform = `scaleX(${scale.toFixed(4)})`;
+      // Mouse users: sleep once the letters settle and nothing is hovering; pointermove wakes it.
+      if (!moving && pointerX === null && fine) {
+        running = false;
+        return;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    const wake = () => {
+      if (running || !window.__introDone) return;
+      running = true;
       raf = requestAnimationFrame(loop);
     };
 
     const onMove = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return;
       pointerX = e.clientX;
+      wake();
       const r = section.getBoundingClientRect();
       if (coordRef.current) {
         const x = String(Math.round(e.clientX - r.left)).padStart(4, "0");
@@ -90,16 +105,26 @@ export function Hero() {
     if (!reduce) {
       section.addEventListener("pointermove", onMove);
       section.addEventListener("pointerleave", onLeave);
-      t0 = performance.now();
-      raf = requestAnimationFrame(loop);
     }
 
     // The entrance waits for the preloader: hide the letters now, play the rise once it hands over.
-    if (!reduce) gsap.set(letters, { yPercent: 105 });
+    // The width loop also waits, so it never competes with the intro for frames.
+    // Intro copy starts hidden too, so nothing snaps from visible to hidden at the hand-over.
+    // Repeat visits have no cover to hide behind: hiding the painted hero then would read as a blink,
+    // so the entrance only plays on the visit that shows the preloader.
+    const entrance = !reduce && !document.documentElement.classList.contains("intro-seen");
+    const reveals = section.querySelectorAll(`.${styles.reveal}`);
+    if (entrance) {
+      gsap.set(letters, { yPercent: 120 });
+      gsap.set(reveals, { y: 24, opacity: 0 });
+    }
     const stopWaiting = onIntroDone(() => {
       if (reduce) return;
+      t0 = performance.now();
+      if (!fine) wake(); // touch screens run the slow wave continuously
+      if (!entrance) return;
       gsap.to(letters, { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.07 });
-      gsap.from(`.${styles.reveal}`, { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.08, delay: 0.3 });
+      gsap.to(reveals, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out", stagger: 0.08, delay: 0.3 });
     });
 
     window.addEventListener("resize", fit);

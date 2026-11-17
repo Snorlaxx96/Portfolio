@@ -2,12 +2,8 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: var(--graphite);
   color: var(--paper);
-  clip-path: inset(0% 0% 0% 0%);
+  pointer-events: auto;
   /* Failsafe: if scripts never run or the timeline stalls, the cover still gets out of the way. */
   animation: plFailsafe 0.4s ease 8s forwards;
 }
@@ -19,8 +15,72 @@
   }
 }
 
-/* The words sit just above the centre hairline, so the progress bar reads as their baseline
-   instead of striking through them. */
+/* ---------- graphite cover ---------- */
+
+.cover {
+  position: absolute;
+  inset: 0;
+}
+
+.half,
+.flashHalf {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.5%; /* the halves overlap by a hair so no seam shows mid-screen */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.top {
+  top: 0;
+  transform-origin: 50% 100%;
+}
+.bottom {
+  bottom: 0;
+  transform-origin: 50% 0%;
+}
+.half {
+  background: var(--graphite);
+}
+
+/* ---------- entry: pure CSS so hydration work cannot stall it ---------- */
+
+.clip {
+  display: inline-block;
+  overflow: hidden;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+  vertical-align: bottom;
+}
+
+.rise {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  animation: plRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.12s + var(--i, 0) * 0.11s);
+}
+
+@keyframes plRise {
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fade {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  animation: plFade 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: calc(0.3s + var(--i, 0) * 0.08s);
+}
+
+@keyframes plFade {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* The words sit just above the centre hairline, which reads as their baseline. */
 .grid {
   position: absolute;
   left: 0;
@@ -28,15 +88,6 @@
   bottom: calc(50% + 14px);
   row-gap: 8px;
   align-items: end;
-}
-
-.clip {
-  display: inline-block;
-  clip-path: inset(0 -0.2em 0 -0.2em);
-  padding-block: 0.08em;
-}
-.clip > span {
-  display: inline-block;
 }
 
 .lede {
@@ -67,7 +118,7 @@
 
 @media (min-width: 900px) {
   .lede {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 3;
     margin: 0;
   }
   .word {
@@ -109,44 +160,81 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* progress hairline across the vertical centre: the bar the screen later pinches into */
+/* ---------- centre hairline / progress bar (stays on top through the exit) ---------- */
+
 .track {
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  height: 1px;
+  top: calc(50% - 1px);
+  z-index: 3;
+  height: 2px;
+}
+.track::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: rgb(238 237 230 / 0.12);
+  transform: scaleY(0.5);
 }
 .bar {
   position: absolute;
   inset: 0;
   background: var(--acid);
-  transform-origin: left;
+  transform-origin: 0% 50%;
   transform: scaleX(0);
+  will-change: transform;
+  /* crawl to 90% while the page loads; JS takes over for the last stretch */
+  animation: plCrawl 1.5s cubic-bezier(0.33, 1, 0.68, 1) 0.1s forwards;
 }
 
-.flash {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
+@keyframes plCrawl {
+  to {
+    transform: scaleX(0.9);
+  }
+}
+
+/* ---------- acid flash ---------- */
+
+.flashHalf {
+  z-index: 1;
   background: var(--acid);
-  color: var(--graphite);
-  clip-path: inset(50% 0 50% 0);
+  transform: scaleY(0);
 }
 
 .flashText {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
   margin: 0;
   padding-inline: var(--gutter);
   text-align: center;
+  color: var(--graphite);
   font-size: clamp(28px, 7.4vw, 104px);
   font-weight: 900;
   font-variation-settings: "wdth" 118;
   letter-spacing: -0.045em;
   line-height: 0.95;
+  pointer-events: none;
 }
 
 .flashLine {
   display: inline-block;
+  transform: translate3d(0, 110%, 0);
+}
+
+/* Reduced motion: no rises or crawl, everything simply present until the fade-out. */
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .fade,
+  .bar {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .bar {
+    transform: scaleX(0.9);
+  }
 }
